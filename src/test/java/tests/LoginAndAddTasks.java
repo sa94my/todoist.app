@@ -36,7 +36,7 @@ public class LoginAndAddTasks extends Base {
 	}
 
 	@Test(dependsOnMethods = {"login"})
-	public void addThreeTasks() {
+	public void addTask() {
 
 		home = new HomeScreen();
 		home.addNewTask(taskName);

@@ -58,6 +58,11 @@ public class HomeScreen extends Base{
 
 		return driver.findElement(MobileBy.xpath("//*[@text='"+searchTaskName+"']"));
 	}
+	
+	public void  clickTaskByName(String searchTaskName) {
+
+		 driver.findElement(MobileBy.xpath("//*[@text='"+searchTaskName+"']")).click();
+	}
 
 	public void openOptionMenue() {
 		optionMenuBtn.click();

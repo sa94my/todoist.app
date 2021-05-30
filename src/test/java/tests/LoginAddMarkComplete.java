@@ -2,13 +2,14 @@ package tests;
 
 import org.testng.annotations.Test;
 
+import base.Base;
 import screens.HomeScreen;
-import screens.OptionMenu;
 import screens.Register_CredentialsScreen;
 import screens.Register_InsertEmailScreen;
+import screens.TaskOptions;
 import screens.WelcomeScreen;
 
-public class LoginAddDelete {
+public class LoginAddMarkComplete extends Base{
 
 	WelcomeScreen welcome ;
 	Register_InsertEmailScreen insertEmail ;
@@ -17,8 +18,8 @@ public class LoginAddDelete {
 	String password = "PROC1234";
 	HomeScreen home ;
 	String taskName = "new task";
-	OptionMenu option;
 	String userName ="procrastinator";
+	TaskOptions taskptions ;
 
 	@Test
 	public void login() {
@@ -28,8 +29,6 @@ public class LoginAddDelete {
 		insertEmail.TypeEmailAndPressContinue(email);
 		enterCredentials = new Register_CredentialsScreen();
 		enterCredentials.loginWithPassword(password);
-		
-		
 
 	}
 
@@ -38,8 +37,15 @@ public class LoginAddDelete {
 
 		home = new HomeScreen();
 		home.addNewTask(taskName);
-		
-		home.getTaskByName(taskName);
-		home.completeTaskWithIndex(1);
+		home.clickTaskByName(taskName);
+		taskptions = new TaskOptions();
+		taskptions.completeTask();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }
