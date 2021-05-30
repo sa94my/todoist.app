@@ -37,7 +37,7 @@ protected static MobileDriver<AndroidElement> driver ;
 			caps.setCapability("appPackage","com.todoist");
 			caps.setCapability("appActivity","com.todoist.alias.HomeActivityDefault");
 			driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
-			driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		}
 	}
 	

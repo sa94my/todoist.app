@@ -1,11 +1,15 @@
 package tests;
 
+import static org.testng.Assert.assertTrue;
+
 import org.testng.annotations.Test;
 
 import com.github.javafaker.Faker;
 
 import base.Base;
 import screens.Register_InsertEmailScreen;
+import screens.HomeScreen;
+import screens.OptionMenu;
 import screens.Register_CredentialsScreen;
 import screens.Register_OkTerms;
 import screens.Register_pickTheme;
@@ -21,6 +25,8 @@ public class Register extends Base{
 	String email = fake.internet().emailAddress();
 	String name = fake.name().firstName();
 	String password = fake.internet().password(8, 10);
+	HomeScreen home;
+	OptionMenu option ;
 	
 	@Test
 	public void registerNewUser() {
@@ -35,7 +41,11 @@ public class Register extends Base{
 		pickTheme = new Register_pickTheme();
 		pickTheme.pickTheme(1);
 		pickTheme.goHome();
-		
+		home = new HomeScreen();
+		home.openOptionMenue();
+		option = new OptionMenu();
+		assertTrue(option.checkUserName().equalsIgnoreCase(name));
+		driver.navigate().back();
 	}
 
 }
