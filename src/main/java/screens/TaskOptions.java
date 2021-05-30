@@ -13,7 +13,7 @@ public class TaskOptions extends Base{
 	@AndroidFindBy(accessibility = "Complete")
 	MobileElement completeTaskBtn  ;
 	
-	@AndroidFindBy(accessibility = "com.todoist:id/item_due")
+	@AndroidFindBy(id = "com.todoist:id/item_due")
 	MobileElement taskDueDay;
 	
 	
@@ -27,6 +27,7 @@ public class TaskOptions extends Base{
 	}
 	
 	public void doItTomorrow() {
+		taskDueDay.click();
 		driver.findElement(MobileBy.xpath("//*[@text='Tomorrow']")).click();
 		driver.navigate().back();
 	}
